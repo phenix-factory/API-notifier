@@ -34,8 +34,6 @@ function balise_LIRE_GRIMOIRE_dyn($index, $args, $id_notification) {
     $entre_grimoire = $GLOBALS['notification_grimoire'][$index];
     // Traduction dans une langue
     $entre_grimoire['text'] = _T($entre_grimoire['text'], $args);
-    // On ajoute l'id_notification pour pouvoir manipuler l'état de la notification plus tard
-    $entre_grimoire['id_notification'] = $id_notification;
 
     return $entre_grimoire['text'];
 }
