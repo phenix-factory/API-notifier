@@ -2,7 +2,7 @@
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
- 
+
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// N
@@ -11,10 +11,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// C
 	'cfg_exemple' => 'Exemple',
 	'cfg_exemple_explication' => 'Explication de cet exemple',
-	'cfg_titre_parametrages' => 'Paramétrages',
+	'cfg_titre_parametrages' => 'Paramètre des notifications',
 
 	// T
 	'titre_page_configurer_notifier' => 'API Notifier',
+        'javascript' => 'Charger noty.js ?'
 );
-
-?>

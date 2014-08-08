@@ -13,14 +13,19 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function notifier_jquery_plugins($scripts) {
 
-    $scripts[] = 'lib/noty/js/noty/packaged/jquery.noty.packaged.js';
+    $config = lire_config('notifier');
+
+    if ($config['javascript'])
+        $scripts[] = 'lib/noty/js/noty/packaged/jquery.noty.packaged.js';
 
     return $scripts;
 }
 
 function notifier_insert_head($flux) {
 
-    $flux .= '<script src="'.produire_fond_statique('javascript/spip_noty.js').'" type="text/javascript"></script>';
+    $config = lire_config('notifier');
+    if ($config['javascript'])
+        $flux .= '<script src="'.produire_fond_statique('javascript/spip_noty.js').'" type="text/javascript"></script>';
 
     return $flux;
 }
