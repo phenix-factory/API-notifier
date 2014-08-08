@@ -1,0 +1,29 @@
+<paquet
+	prefix="notifier"
+	categorie="communication"
+	version="1.0.0"
+	etat="dev"
+	compatibilite="[3.0.16;3.0.*]"
+        logo="prive/themes/spip/images/notifier-64.png"
+	documentation=""
+	schema="1.0.0"
+>
+	<nom>API Notifier</nom>
+
+	<auteur lien='http://p.henix.be'>Phenix</auteur>
+
+	<licence>GNU/GPL</licence>
+
+	<necessite nom="saisies" compatibilite="[1.24.0;]" />
+
+        <necessite nom="facteur" />
+
+	<pipeline nom="autoriser" inclure="notifier_autorisations.php" />
+
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/notifier.php" />
+	<pipeline nom="declarer_tables_interfaces" inclure="base/notifier.php" />
+
+	<pipeline nom="jquery_plugins" inclure="notifier_pipelines.php" />
+        <pipeline nom="insert_head" inclure="notifier_pipelines.php" />
+
+</paquet>

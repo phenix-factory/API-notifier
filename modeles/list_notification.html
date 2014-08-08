@@ -1,0 +1,10 @@
+<B_notifications_list>
+  <table id="#ENV{id, notfication-list}"[ class="(#ENV{class})"]>
+    <BOUCLE_notifications_list(NOTIFICATIONS){id_auteur=#SESSION{id_auteur}}{lu=0}>
+      <tr>
+          <td>#DATE</td>
+          <td>#LIRE_GRIMOIRE</td>
+      </tr>
+    </BOUCLE_notifications_list>
+  </table>
+</B_notifications_list>

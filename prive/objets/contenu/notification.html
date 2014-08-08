@@ -1,0 +1,18 @@
+<BOUCLE_notification(NOTIFICATIONS){id_notification}>
+
+[<div class="champ contenu_id_auteur[ (#ID_AUTEUR*|strlen|?{'',vide})]">
+	<label><:notification:label_id_auteur:> : </label>
+	<span dir='#LANG_DIR' class='#EDIT{id_auteur} id_auteur'>(#ID_AUTEUR)</span>
+</div>]
+
+[<div class="champ contenu_index_notification[ (#INDEX_NOTIFICATION*|strlen|?{'',vide})]">
+	<label><:notification:label_index_notification:> : </label>
+	<span dir='#LANG_DIR' class='#EDIT{index_notification} index_notification'>(#INDEX_NOTIFICATION)</span>
+</div>]
+
+[<div class="champ contenu_lu[ (#LU*|strlen|?{'',vide})]">
+	<label><:notification:label_lu:> : </label>
+	<span dir='#LANG_DIR' class='#EDIT{lu} lu'>(#LU)</span>
+</div>]
+
+</BOUCLE_notification>

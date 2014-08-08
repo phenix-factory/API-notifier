@@ -1,0 +1,17 @@
+[(#REM)
+Fichier qui va générer la liste des notifications d'un utilisateur
+]
+
+[(#REM) On ne met rien en cache sur cette page, vu qu'on fait du realtime pour les notifications ]
+
+#CACHE{0}
+#HTTP_HEADER{Content-type:application/json;}
+[<B_noty>
+<BOUCLE_noty(NOTIFICATIONS){id_auteur=#SESSION{id_auteur}} {lu=0} {','}>
+  [(#REM) On récupère les information de la notification dans le grimoire. ]
+  #GRIMOIRE{#INDEX_NOTIFICATION}
+</BOUCLE_noty>
+</B_noty>]
+
+[(#REM) On trim le fichier, histoire qu'il soit propre ]
+#FILTRE{trim}

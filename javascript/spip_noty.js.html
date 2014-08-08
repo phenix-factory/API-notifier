@@ -1,0 +1,56 @@
+$(function ($) {
+    // Configuration par défaut de noty
+    [(#INCLURE{fond=javascript/noty.defaut.js})]
+
+    // Ce tableau va contenir les notifications déjà afficher via noty
+    var afficher = [];
+
+    var get_noty = function () {
+        // Récupération du json
+        $.getJSON("#URL_PAGE{noty.json}")
+            .done(function (json) {
+
+                // On va créer une notification noty par entrer dans le fichier json
+                $.each(json, function (index, value) {
+
+                    // Valeur par défaut fusion avec la configuration par défaut
+                    value = $.extend(true, {}, default_noty, value);
+
+                    // Si la notification n'a pas déjà été affiché on lance le script
+                    if (afficher.indexOf(value.id_notification) == -1) {
+                        // On va ajouter manuellement le callback sur onClose pour marquer une notification comme lue.
+                        value.callback = {
+                            onShow: function () {
+                                // On remplit le tableau avec la notification qui vient d'être affichée
+                                afficher.push(value.id_notification);
+                            },
+                            onClose: function () {
+                                set_lut(value.id_notification);
+                            }
+                        }
+
+                        var notification = noty(value);
+                    }
+                });
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                var err = textStatus + ", " + error;
+                console.log( "Request Failed: " + err );
+            });
+    }
+    // Fonction qui va marqué la notification comme lue. Un simple ajax sur un script d'update.
+    var set_lut = function (id_notification) {
+        // Si un id_notification numeric est envoyer
+        if ($.isNumeric(id_notification)) {
+            // Envoyer une requête ajax pour marquer cette notification comme lue
+            $.get("lue.api", {arg: id_notification});
+
+            // Maintenant qu'une notification à été marqué comme lue, il faut rafraichir l'éventuel bloc notification
+            ajaxReload('notification', {
+                history:false
+            });
+        }
+    }
+
+    setInterval(get_noty, 2000);
+});
