@@ -32,8 +32,18 @@ function balise_LIRE_GRIMOIRE_dyn($index, $args, $id_notification) {
 
     // récupération de la page du grimoire
     $entre_grimoire = $GLOBALS['notification_grimoire'][$index];
-    // Traduction dans une langue
-    $entre_grimoire['text'] = _T($entre_grimoire['text'], $args);
+
+    // S'il n'y a pas de squelette référencé, c'est une chaine de langue
+    if (!$GLOBALS['notification_grimoire'][$index]['squelette'])
+        // Traduction dans une langue
+        $entre_grimoire['text'] = _T($entre_grimoire['text'], $args);
+    // Sinon, on récupère le squelette qui correspond
+    else {
+        $entre_grimoire['text'] = recuperer_fond(
+            $GLOBALS['notification_grimoire'][$index]['squelette'],
+            $args
+        );
+    }
 
     return $entre_grimoire['text'];
 }
