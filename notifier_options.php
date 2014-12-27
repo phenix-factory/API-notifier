@@ -12,7 +12,7 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 
-// Un tableau de base s'il n'est pas déclarer par l'utilisateur
+// Un tableau de base si il n'est pas déclarer par l'utilisateur
 if (!$GLOBALS['notification_grimoire']) {
     $GLOBALS['notification_grimoire'] =
         array(
